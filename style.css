@@ -151,7 +151,8 @@ Much easier to understand now.
     transition: transform 0.6s ease-in-out;
     z-index: 100;
 }
-/*overlay-container occupy the right hand side. But overlay, even though it is within the overlay-container,
+/*overlay-container occupy the right hand side.
+  But overlay, even though it is within the overlay-container,
   it's actually occupying the whole page again because of the width 200% and left -100%*/
 .overlay {
     background: #ff416c;
@@ -210,5 +211,14 @@ Much easier to understand now.
 }
 
 
-
-
+/* Honestly, don't quite understand this following part...*/
+/* Move overlay back to the right */
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+.container.right-panel-active .overlay-left {
+    transform: translateX(0); /* because it was -20% before  */
+}
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
