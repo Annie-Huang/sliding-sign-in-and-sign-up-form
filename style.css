@@ -122,17 +122,23 @@ button.ghost {
     z-index: 2; /* Make sure it's always on top of the sign up */
 }
 .sign-up-container {
-    right: 0;
+    left: 0;
     width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
+
+
+
 /* So the layout is like this:
 top         overlay-container       right (at the beginner)     z-index:200
             overlay                 whole page
             sign-in-container       left                        z-index:2
-bottom:     sign-up-container       right                       z-index:1
+bottom:     sign-up-container       left                        z-index:1
+
+Seems sign-in and sign-up are moving together, just keep change sign-up z-index and opacity.
+Much easier to understand now.
 */
 
 .overlay-container {
@@ -184,10 +190,24 @@ bottom:     sign-up-container       right                       z-index:1
 
 
 
+/* Animation */
 
+/* Move signin to the right */
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
 
+/* Move overlay to left */
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
 
-
+/* Bring sing up over sign in */
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+}
 
 
 
