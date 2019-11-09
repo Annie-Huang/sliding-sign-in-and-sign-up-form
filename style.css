@@ -128,6 +128,60 @@ button.ghost {
     z-index: 1;
 }
 
+/* So the layout is like this:
+top         overlay-container       right (at the beginner)     z-index:200
+            overlay                 whole page
+            sign-in-container       left                        z-index:2
+bottom:     sign-up-container       right                       z-index:1
+*/
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+/*overlay-container occupy the right hand side. But overlay, even though it is within the overlay-container,
+  it's actually occupying the whole page again because of the width 200% and left -100%*/
+.overlay {
+    background: #ff416c;
+    background: linear-gradient(to right, #ff4b2b, #ff416c) no-repeat 0 0 / cover;
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+.overlay-panel {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+.overlay-left {
+    /* This makes the Welcome Back initially out of the page from the left side pannel. (out of the page)
+       And then we make it slide into the left hand panel.*/
+    transform: translateX(-20%);
+}
+
 
 
 
